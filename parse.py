@@ -3,8 +3,26 @@ import json
 import re
 import sys
 
+#QUESTION_PATTERN = r'''
+#    (?P<number>T\d[A-Z]\d{2})       # Question number
+#    \s+
+#    \((?P<answer>[A-D])\)
+#    (\s+\[(?P<section>[^\]]+)\])?
+#    (?P<question>.*?)
+#    ~~
+#'''
+
+#QUESTION_PATTERN = r'''
+#    (?P<number>G\d[A-Z]\d{2})       # Question number
+#    \s+
+#    \((?P<answer>[A-D])\)
+#    (\s+\[(?P<section>[^\]]+)\])?
+#    (?P<question>.*?)
+#    ~~
+#'''
+
 QUESTION_PATTERN = r'''
-    (?P<number>T\d[A-Z]\d{2})       # Question number
+    (?P<number>E\d[A-Z]\d{2})       # Question number
     \s+
     \((?P<answer>[A-D])\)
     (\s+\[(?P<section>[^\]]+)\])?
@@ -22,7 +40,7 @@ def parse_content(content):
         try:
             question, a, b, c, d = question.split('\n')
         except:
-            print repr(question)
+            print(repr(question))
             sys.exit()
 
         questions.append({
@@ -36,10 +54,11 @@ def parse_content(content):
     return questions
 
 def main():
-    content = sys.stdin.read().decode('windows-1252')
+    # content = sys.stdin.read().decode('windows-1252')
+    content = sys.stdin.read()
     content = content.replace('\r\n', '\n')
     questions = parse_content(content)
-    print json.dumps(questions, indent=4)
+    print(json.dumps(questions, indent=4))
 
 if __name__ == '__main__':
     main()
