@@ -16,3 +16,5 @@ To parse::
     python parse.py < questions-extra-2016-2020-2nd-errata.txt > questions-extra-2016-2020.json
 
 Questions downloaded from http://www.arrl.org/question-pools
+
+Distributed under the MIT License.
